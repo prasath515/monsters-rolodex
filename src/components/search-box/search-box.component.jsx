@@ -4,7 +4,6 @@ import './search-box.style.css'
 
 
 export const SearchBox = ({placeholder,handleChange}) => (
-
     <div >
         <input
             className='search'
