@@ -25,7 +25,7 @@ class App extends Component {
     }
 
     handleChange = (e) => {
-        this.setState({ searchField: e.target.value })
+        this.setState({ searchField: e.target.value }, () => console.log(this.state.searchField))
     }
 
     handleClick = () => {
