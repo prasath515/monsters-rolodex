@@ -21,6 +21,9 @@ class App extends Component {
             .catch(err => console.log('found error in Users API'));
     }
 
+    handleChange = (e) => {
+        this.setState({ searchField: e.target.value })
+    }
 
     render() {
 
@@ -29,10 +32,10 @@ class App extends Component {
 
         return (
             <div className="App">
-
+                <h1>Monsters Rolodex</h1>
                 <SearchBox              
                     placeholder= 'search monsters'
-                    handleChange= {e => this.setState({ searchField: e.target.value })}
+                    handleChange= {this.handleChange}
                 />
 
                 <CardList 
