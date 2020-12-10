@@ -4,6 +4,8 @@ import { CardList } from './components/card-list/card-list.component';
 
 import { SearchBox } from './components/search-box/search-box.component'
 
+import { Profile } from './components/profile/profile.component'
+
 import './App.css';
 
 class App extends Component {
@@ -11,7 +13,8 @@ class App extends Component {
         super();
         this.state = {
             monsters: [],
-            searchField : ''
+            searchField: '',
+            profileSet: 2
         };
     }
     componentDidMount() {
@@ -25,21 +28,33 @@ class App extends Component {
         this.setState({ searchField: e.target.value })
     }
 
+    handleClick = () => {
+        this.setState(prevState => {
+            return { profileSet: prevState.profileSet < 6 ? prevState.profileSet + 1 : 2 }
+        })
+    }
+
     render() {
 
-        const {monsters , searchField} = this.state;
+        const { monsters, searchField, profileSet } = this.state;
         const filteredMonster = monsters.filter(monster => monster.name.toLowerCase().includes(searchField.toLowerCase()));
 
         return (
             <div className="App">
                 <h1>Monsters Rolodex</h1>
-                <SearchBox              
-                    placeholder= 'search monsters'
-                    handleChange= {this.handleChange}
+
+                <SearchBox
+                    placeholder='search monsters'
+                    handleChange={this.handleChange}
                 />
 
-                <CardList 
-                monsters= {filteredMonster} 
+                <Profile
+                    handleClick={this.handleClick}
+                />
+
+                <CardList
+                    profSet={profileSet}
+                    monsters={filteredMonster}
                 />
 
             </div>

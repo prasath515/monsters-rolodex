@@ -21,7 +21,7 @@ export const CardList = props => {
         <div className='card-list' >
             {
                 m.map(monster => (
-                    <Card key={monster.id} monster={monster} />
+                    <Card key={monster.id} profileSet= {props.profSet} monster={monster} />
                 ))
             }
         </div>
